@@ -310,6 +310,55 @@
             border-radius: 2px;
         }
 
+        .about-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 3rem;
+            max-width: 1000px;
+            margin: 0 auto 3rem;
+            flex-wrap: wrap;
+        }
+
+        .profile-photo-container {
+            position: relative;
+            width: 250px;
+            height: 250px;
+        }
+
+        .profile-photo {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #00ff9d;
+            box-shadow: 0 10px 40px rgba(0, 255, 157, 0.3);
+            position: relative;
+            z-index: 2;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .profile-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 255, 157, 0.5);
+        }
+
+        .photo-border {
+            position: absolute;
+            top: -10px;
+            left: -10px;
+            right: -10px;
+            bottom: -10px;
+            border-radius: 50%;
+            border: 2px solid rgba(0, 255, 157, 0.3);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
         .about-content {
             max-width: 800px;
             margin: 0 auto;
@@ -433,6 +482,121 @@
             left: 0;
             color: #00ff9d;
             font-weight: bold;
+        }
+
+        .certificates-section {
+            background: linear-gradient(135deg, #0f1729 0%, #1a1f3a 100%);
+            border-top: 1px solid rgba(0, 255, 157, 0.2);
+            border-bottom: 1px solid rgba(0, 255, 157, 0.2);
+        }
+
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .certificate-card {
+            background: linear-gradient(135deg, #1a1f3a 0%, #0f1729 100%);
+            border-radius: 15px;
+            overflow: hidden;
+            border: 1px solid rgba(0, 255, 157, 0.2);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+            transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
+            cursor: pointer;
+        }
+
+        .certificate-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 255, 157, 0.3);
+            border-color: #00ff9d;
+        }
+
+        .certificate-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #1a1f3a 0%, #2a2f4a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .certificate-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .certificate-card:hover .certificate-image img {
+            transform: scale(1.1);
+        }
+
+        .certificate-placeholder {
+            font-size: 4rem;
+            color: #00ff9d;
+        }
+
+        .certificate-content {
+            padding: 1.5rem;
+        }
+
+        .certificate-content h3 {
+            color: #00ff9d;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .certificate-issuer {
+            color: #00b8ff;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+        }
+
+        .certificate-date {
+            color: #b0b0b0;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .certificate-description {
+            color: #b0b0b0;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .certificate-badge {
+            display: inline-block;
+            background: rgba(0, 255, 157, 0.1);
+            color: #00ff9d;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(0, 255, 157, 0.3);
+            margin-top: 1rem;
+        }
+
+        .view-certificate-btn {
+            display: inline-block;
+            margin-top: 1rem;
+            padding: 0.5rem 1.5rem;
+            background: transparent;
+            color: #00ff9d;
+            border: 2px solid #00ff9d;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .view-certificate-btn:hover {
+            background: #00ff9d;
+            color: #0a0e27;
         }
 
         .skills-grid {
@@ -619,8 +783,8 @@
             }
             
             .nav-links {
-                gap: 1rem;
-                font-size: 0.9rem;
+                gap: 0.8rem;
+                font-size: 0.85rem;
             }
             
             .ticker {
@@ -630,19 +794,29 @@
             .chart-wrapper {
                 height: 300px;
             }
+
+            .profile-photo-container {
+                width: 200px;
+                height: 200px;
+            }
+
+            .about-container {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
     <nav class="navbar">
         <div class="logo">
-            <img src="logo.png" alt="Your Logo" style="height: 50px; width: auto; margin-right: 20px;">
+            <img src="logo.png" alt="KINGFx Logo" style="height: 50px; width: auto; margin-right: 20px;">
             <span class="logo-text">KINGFx</span>
         </div>
         <ul class="nav-links">
             <li><a href="#about">About</a></li>
             <li><a href="#performance">Performance</a></li>
             <li><a href="#strategy">Strategy</a></li>
+            <li><a href="#certificates">Certificates</a></li>
             <li><a href="#skills">Skills</a></li>
             <li><a href="#projects">Projects</a></li>
             <li><a href="#contact">Contact</a></li>
@@ -687,8 +861,14 @@
 
     <section id="about">
         <h2 class="section-title">About Me</h2>
-        <div class="about-content">
-            <p>I'm a forex trader and programmer specializing in algorithmic trading systems and financial technology solutions. With expertise in both market analysis and software development, I create automated trading bots, custom indicators, and data-driven trading strategies. My technical background enables me to transform trading ideas into robust, profitable systems.</p>
+        <div class="about-container">
+            <div class="profile-photo-container">
+                <img src="profile-photo.jpg" alt="King Berlie R. De Rama" class="profile-photo">
+                <div class="photo-border"></div>
+            </div>
+            <div class="about-content">
+                <p>I'm a forex trader and programmer specializing in algorithmic trading systems and financial technology solutions. With expertise in both market analysis and software development, I create automated trading bots, custom indicators, and data-driven trading strategies. My technical background enables me to transform trading ideas into robust, profitable systems.</p>
+            </div>
         </div>
         <div class="stats-grid">
             <div class="stat-card">
@@ -769,6 +949,101 @@
                     <li>Risk-to-Reward Minimum 1:2</li>
                     <li>Daily Loss Limit Protection</li>
                 </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="certificates" class="certificates-section">
+        <h2 class="section-title">Certifications & Awards</h2>
+        <div class="certificates-grid">
+            <div class="certificate-card">
+                <div class="certificate-image">
+                    <img src="certificate1.jpg" alt="Certificate 1" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="certificate-placeholder">🏆</div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Advanced Forex Trading Certification</h3>
+                    <div class="certificate-issuer">Trading Academy Institute</div>
+                    <div class="certificate-date">Issued: January 2024</div>
+                    <p class="certificate-description">Completed advanced forex trading program covering technical analysis, risk management, and trading psychology.</p>
+                    <span class="certificate-badge">Verified</span>
+                    <a href="#" class="view-certificate-btn">View Certificate</a>
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-image">
+                    <img src="certificate2.jpg" alt="Certificate 2" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="certificate-placeholder">💻</div>
+                </div>
+                <div class="certificate-content">
+                    <h3>MQL5 Programming Expert</h3>
+                    <div class="certificate-issuer">MetaQuotes Software Corp.</div>
+                    <div class="certificate-date">Issued: March 2024</div>
+                    <p class="certificate-description">Expert-level certification in MQL5 programming for creating Expert Advisors and custom indicators.</p>
+                    <span class="certificate-badge">Verified</span>
+                    <a href="#" class="view-certificate-btn">View Certificate</a>
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-image">
+                    <img src="certificate3.jpg" alt="Certificate 3" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="certificate-placeholder">📊</div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Python for Financial Analysis</h3>
+                    <div class="certificate-issuer">Coursera / University</div>
+                    <div class="certificate-date">Issued: June 2023</div>
+                    <p class="certificate-description">Specialized course in Python programming for financial data analysis, backtesting, and algorithmic trading.</p>
+                    <span class="certificate-badge">Verified</span>
+                    <a href="#" class="view-certificate-btn">View Certificate</a>
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-image">
+                    <img src="certificate4.jpg" alt="Certificate 4" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="certificate-placeholder">🎯</div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Smart Money Concepts (SMC)</h3>
+                    <div class="certificate-issuer">ICT Trading Academy</div>
+                    <div class="certificate-date">Issued: September 2023</div>
+                    <p class="certificate-description">Comprehensive training in institutional trading concepts, order blocks, and liquidity analysis.</p>
+                    <span class="certificate-badge">Verified</span>
+                    <a href="#" class="view-certificate-btn">View Certificate</a>
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-image">
+                    <img src="certificate5.jpg" alt="Certificate 5" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="certificate-placeholder">⚡</div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Algorithmic Trading Strategies</h3>
+                    <div class="certificate-issuer">QuantInsti</div>
+                    <div class="certificate-date">Issued: November 2023</div>
+                    <p class="certificate-description">Advanced certification in developing, testing, and deploying automated trading strategies.</p>
+                    <span class="certificate-badge">Verified</span>
+                    <a href="#" class="view-certificate-btn">View Certificate</a>
+                </div>
+            </div>
+
+            <div class="certificate-card">
+                <div class="certificate-image">
+                    <img src="certificate6.jpg" alt="Certificate 6" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="certificate-placeholder">🚀</div>
+                </div>
+                <div class="certificate-content">
+                    <h3>Full-Stack Web Development</h3>
+                    <div class="certificate-issuer">freeCodeCamp</div>
+                    <div class="certificate-date">Issued: February 2023</div>
+                    <p class="certificate-description">Comprehensive web development certification covering frontend and backend technologies.</p>
+                    <span class="certificate-badge">Verified</span>
+                    <a href="#" class="view-certificate-btn">View Certificate</a>
+                </div>
             </div>
         </div>
     </section>
@@ -904,7 +1179,6 @@
     </footer>
 
     <script>
-        // Live Price Ticker with Real API Integration
         const pairs = {
             'EUR/USD': 'EURUSD',
             'GBP/USD': 'GBPUSD',
@@ -916,19 +1190,16 @@
 
         async function updateLivePrices() {
             try {
-                // Using a free forex API - you can replace with your preferred API
                 const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
                 const data = await response.json();
                 
-                // Calculate prices based on exchange rates
                 const prices = {
                     'EUR/USD': (1 / data.rates.EUR).toFixed(4),
                     'GBP/USD': (1 / data.rates.GBP).toFixed(4),
                     'USD/JPY': data.rates.JPY.toFixed(2),
-                    'BTC/USD': '45238.50' // Simulated - replace with crypto API if needed
+                    'BTC/USD': '45238.50'
                 };
 
-                // Update each ticker item
                 Object.keys(prices).forEach(pair => {
                     const elementId = pair.toLowerCase().replace('/', '').replace(' ', '');
                     const element = document.getElementById(elementId);
@@ -936,7 +1207,6 @@
                     const currentPrice = parseFloat(prices[pair]);
                     const previousPrice = previousPrices[pair] || currentPrice;
                     
-                    // Determine if price went up or down
                     let changeClass = '';
                     let changeSymbol = '';
                     let changePercent = 0;
@@ -954,25 +1224,20 @@
                         changeSymbol = '';
                     }
                     
-                    // Update the display
                     priceSpan.className = `ticker-price ${changeClass}`;
                     priceSpan.innerHTML = `${prices[pair]} <span class="ticker-change">${changeSymbol} ${changePercent}%</span>`;
                     
-                    // Add pulse animation on update
                     element.classList.add('pulse');
                     setTimeout(() => element.classList.remove('pulse'), 500);
                     
-                    // Store current price for next comparison
                     previousPrices[pair] = currentPrice;
                 });
             } catch (error) {
                 console.error('Error fetching prices:', error);
-                // Fallback to simulated data if API fails
                 updateSimulatedPrices();
             }
         }
 
-        // Fallback function with simulated price changes
         function updateSimulatedPrices() {
             const simulatedPrices = {
                 'eurusd': { base: 1.0842, pair: 'EUR/USD' },
@@ -986,7 +1251,6 @@
                 const priceSpan = element.querySelector('.ticker-price');
                 const { base, pair } = simulatedPrices[id];
                 
-                // Add random small fluctuation
                 const change = (Math.random() - 0.5) * 0.01;
                 const newPrice = base * (1 + change);
                 const isUp = change > 0;
@@ -1002,24 +1266,18 @@
             });
         }
 
-        // Initial price update
         updateLivePrices();
-        
-        // Update prices every 5 seconds
         setInterval(updateLivePrices, 5000);
 
-        // Trading Performance Chart
         const ctx = document.getElementById('performanceChart').getContext('2d');
         
-        // Generate realistic trading performance data
         function generatePerformanceData() {
             const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
             let balance = 10000;
             const data = [balance];
             
             for (let i = 0; i < 11; i++) {
-                // Simulate realistic trading returns (mostly positive with some volatility)
-                const monthlyReturn = (Math.random() * 0.15 - 0.02); // -2% to +13%
+                const monthlyReturn = (Math.random() * 0.15 - 0.02);
                 balance = balance * (1 + monthlyReturn);
                 data.push(balance);
             }
@@ -1056,9 +1314,7 @@
                         display: true,
                         labels: {
                             color: '#e0e0e0',
-                            font: {
-                                size: 14
-                            }
+                            font: { size: 14 }
                         }
                     },
                     tooltip: {
@@ -1107,7 +1363,6 @@
             }
         });
 
-        // Smooth scroll for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -1121,7 +1376,6 @@
             });
         });
 
-        // Add scroll animation for elements
         const observerOptions = {
             threshold: 0.1,
             rootMargin: '0px 0px -50px 0px'
@@ -1136,8 +1390,7 @@
             });
         }, observerOptions);
 
-        // Observe all cards for animation
-        document.querySelectorAll('.skill-card, .project-card, .strategy-card, .stat-card').forEach(card => {
+        document.querySelectorAll('.skill-card, .project-card, .strategy-card, .stat-card, .certificate-card').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(30px)';
             card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
